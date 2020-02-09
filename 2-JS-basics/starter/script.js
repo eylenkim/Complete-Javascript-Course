@@ -130,7 +130,6 @@ JohnEatsOut.calcTips();
 console.log(JohnEatsOut);
 
 
-
 //Coding Challenge 5.2
 var MarkEatsOut = {
 	bills: [77, 375, 110, 45],
