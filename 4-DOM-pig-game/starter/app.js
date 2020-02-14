@@ -107,25 +107,24 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     }
 });
 
-function nextPlayer(){
-				// next players turn
-				activePlayer === 0 ? activePlayer = 1 : activerPlayer = 0;
-				//reset the roundScore for the nextPlayer
-				roundScore = 0;
+function nextPlayer() {
+    //Next player
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
 
-				//resets scores on the UI
-				document.getElementById('current-0').textContent = '0';
-				document.getElementById('current-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
 
-				//changing the UI based on who's turn it is
-				document.querySelector('.player-0-panel').classList.toggle('active');
-				document.querySelector('.player-1-panel').classList.toggle('active');
-				//alternative:
-				////document.querySelector('.player-0-panel').classList.remove('active');
-				/////document.querySelector('.player-1-panel').classList.add('active');
-				
-				document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    //document.querySelector('.player-0-panel').classList.remove('active');
+    //document.querySelector('.player-1-panel').classList.add('active');
+
+    document.querySelector('.dice').style.display = 'none';
 }
+
+document.querySelector('.btn-new').addEventListener('click', init);
 
 function init(){
 	scores = [0, 0];

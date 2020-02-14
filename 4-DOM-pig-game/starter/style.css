@@ -45,7 +45,14 @@ body {
     padding: 100px;
 }
 
-
+.title-text {
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 70px;
+    text-align:center;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
 
 /**********************************************
 *** PLAYERS
@@ -137,14 +144,34 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
-.btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-new { top: 158px;}
+.btn-roll { top: 494px;}
+.btn-hold { top: 554px;}
 
+.instructions {
+    float: right;
+    width: 200px;
+    height: 50px;
+    background-color: #EB4D4D;
+    color: white;
+    text-align: center;
+    font-size: 29px;
+    line-height: 39px;
+}
+
+.instructions:hover {
+    color: black;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.instructions a {
+    text-decoration: none;
+}
 .dice {
     position: absolute;
     left: 50%;
-    top: 178px;
+    top: 272px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
