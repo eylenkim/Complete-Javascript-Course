@@ -57,11 +57,24 @@ We dont want to call our function in there, we want the event listener to call i
   //document.querySelector('.btn-roll').addEventListener('click, btn');
 */
 
+var element = document.querySelector('.dice');
 
 //ALTERNATIVELY, instead of what you did right above, you can make an anonymous function inside the event listener
 //however, you can only use this anonymous function here and cannot reuse it
 document.querySelector('.btn-roll').addEventListener('click', function() {
     if(gamePlaying) {
+
+    	 element.classList.remove("dice-animation");
+  
+  // -> triggering reflow /* The actual magic */
+  // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
+  // This was, from the original tutorial, will no work in strict mode. Thanks Felis Phasma! The next uncommented line is the fix.
+  element.offsetWidth = element.offsetWidth;
+  
+  
+  // -> and re-adding the class
+  element.classList.add("dice-animation");
+
         // 1. Random number
         var dice = Math.floor(Math.random() * 6) + 1;
 
@@ -83,6 +96,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 
     } 
+
+
 
 });
 
@@ -148,3 +163,5 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
 }
+
+
