@@ -17,13 +17,12 @@ GAME RULES:
 //You have to use '' quotes inside some html when using html elements inside Js
   because if you didn't, it would think that it's a JS element
    */
-
 var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
 //Dice build
-   /** Math.random() generates a random number between 0 and 1.
+/** Math.random() generates a random number between 0 and 1.
 		Therefore Math.random()*10 generates a random number between 0 and 10, and (Math.random()*10)+1 a number between 1 and 11.
 			Math.floor() drops the decimal of this number, and makes it an integer from 0 to 10.
     **/
@@ -62,18 +61,18 @@ var element = document.querySelector('.dice');
 //ALTERNATIVELY, instead of what you did right above, you can make an anonymous function inside the event listener
 //however, you can only use this anonymous function here and cannot reuse it
 document.querySelector('.btn-roll').addEventListener('click', function() {
-    if(gamePlaying) {
+    if (gamePlaying) {
 
-    	 element.classList.remove("dice-animation");
-  
-  // -> triggering reflow /* The actual magic */
-  // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
-  // This was, from the original tutorial, will no work in strict mode. Thanks Felis Phasma! The next uncommented line is the fix.
-  element.offsetWidth = element.offsetWidth;
-  
-  
-  // -> and re-adding the class
-  element.classList.add("dice-animation");
+        element.classList.remove("dice-animation");
+
+        // -> triggering reflow /* The actual magic */
+        // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
+        // This was, from the original tutorial, will no work in strict mode. Thanks Felis Phasma! The next uncommented line is the fix.
+        element.offsetWidth = element.offsetWidth;
+
+
+        // -> and re-adding the class
+        element.classList.add("dice-animation");
 
         // 1. Random number
         var dice = Math.floor(Math.random() * 6) + 1;
@@ -95,7 +94,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         }
 
 
-    } 
+    }
 
 
 
@@ -143,12 +142,12 @@ function nextPlayer() {
 
 document.querySelector('.btn-new').addEventListener('click', init);
 
-function init(){
-	scores = [0, 0];
+function init() {
+    scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
     gamePlaying = true;
-    
+
     document.querySelector('.dice').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
@@ -163,5 +162,3 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
 }
-
-

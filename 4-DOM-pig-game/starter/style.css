@@ -188,8 +188,8 @@ i {
 
 .dice-animation {
     animation-name: dice-animation;
-    animation-duration: 1000ms;
-    animation-iteration-count: 1s;
+    animation-duration: 300ms;
+    animation-iteration-count: .5s;
     animation-timing-function: linear;
 }
 
