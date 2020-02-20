@@ -365,7 +365,7 @@ console.log(fullAges);
 
 
 function calcAge (element) {
-	return 2020- element;
+	return 2020 - element;
 }
 //
 
@@ -375,5 +375,43 @@ function isFullAge(limit, element) {
 
 var ages = arrayCalc(years, calcAge);
 
-var fullAgeJapan = arrayCalc(ages,isFullAge.bind())
+var fullAgeJapan = arrayCalc(ages,isFullAge.bind());
+
+
+//////Coding Quiz Coding Challenge:
+
+//build a function constructor
+class Question = {
+	constructor(question, answersArray, answerIndex) {
+		this.question = question;
+		this.answersArray = answersArray;
+		this.answerIndex = answerIndex;
+	}
+}
+
+
+//create questions using the constructor
+const question1 = new Question(
+	'Which of the nicknames for MiMi are NOT real?',
+	['Memus Mimarius', 'Miamou', 'Cute Kitten', 'Lil Miss'],
+	2);
+const question2 = new Question (
+	'What type of guitar does Eylen play?', ['Telecaster', 'Stratocaster', 'First Act'], 1);
+const question3 = new Question (
+	'In the show \"The Office\", who is the one character that doesn\'t know their official job title?', ['Kevin', 'Kelly', 'Creed', 'Meredith'], 2);
+
+//store all the questions inside an array
+let questions = [question1, question2, question3];
+
+//generate a random question from the questions array
+var randomQuestion = Math.floor(Math.random() * questions.length);
+
+//use the random number as an index to grab a random question and console log it w/ the answers
+
+
+
+
+
+
+
 
