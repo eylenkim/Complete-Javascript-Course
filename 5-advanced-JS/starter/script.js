@@ -129,6 +129,10 @@ the outside(age).
 
 var years = [1997, 2003, 1969, 2001, 2020];
 
+function calcAge (element) {
+	return 2020- element;
+}
+
 function arrayCalc(arr, func) {
 	var arrayResult = [];
 
@@ -139,6 +143,20 @@ function arrayCalc(arr, func) {
 	return arrayResult;
 }
 
-function calcAge (element) {
-	return 2020- element;
+var ages = arrayCalc(years, calcAge);
+console.log(ages);
+
+
+//another example that takes recent array "ages"
+function isFullAge(element) {
+	//if age is greater than or equal to 18, TRUE is returned
+	return element >=18;
 }
+
+var fullAges = arrayCalc(ages, isFullAge);
+console.log(fullAges);
+
+
+
+
+
