@@ -381,8 +381,9 @@ var fullAgeJapan = arrayCalc(ages,isFullAge.bind());
 //////Coding Quiz Coding Challenge:
 
 //build a function constructor
-class Question = {
-	constructor(question, answersArray, answerIndex) {
+(function() {
+class Question {
+	constructor (question, answersArray, answerIndex) {
 		this.question = question;
 		this.answersArray = answersArray;
 		this.answerIndex = answerIndex;
@@ -390,28 +391,116 @@ class Question = {
 }
 
 
+
 //create questions using the constructor
-const question1 = new Question(
+var question1 = new Question(
 	'Which of the nicknames for MiMi are NOT real?',
 	['Memus Mimarius', 'Miamou', 'Cute Kitten', 'Lil Miss'],
 	2);
-const question2 = new Question (
+var question2 = new Question (
 	'What type of guitar does Eylen play?', ['Telecaster', 'Stratocaster', 'First Act'], 1);
-const question3 = new Question (
+var question3 = new Question (
 	'In the show \"The Office\", who is the one character that doesn\'t know their official job title?', ['Kevin', 'Kelly', 'Creed', 'Meredith'], 2);
 
 //store all the questions inside an array
-let questions = [question1, question2, question3];
+	let questions = [question1, question2, question3];
 
 //generate a random question from the questions array
-var randomQuestion = Math.floor(Math.random() * questions.length);
+	//const randomQuestion = Math.floor(Math.random() * questions.length);
 
-//use the random number as an index to grab a random question and console log it w/ the answers
+/*use the random number as an index to grab a random question and console log it w/ the answers
+-Writing the method into the Question prototype property -- which is the prototype of all the 
+instances w/ all the objects created through it (whic his q1-3)
+*/
+//Since you can't just do Question.displayQuestion() to add it to the constructor,
+//, you have to add the .prototype to add new methods to object constructor
+Question.prototype.displayQuestion = function() {
+	//display the question
+	console.log(this.question);
+
+	//display each possible answer in the array
+	for (let i = 0; i < this.answersArray.length; i++) {
+		//This i: displays the number 
+		console.log(i + ': ' +
+			this.answersArray[i])
+	}
+}
+
+//out of all the questions, pick a random question, then call it to display results
+	//questions[randomQuestion].displayQuestion();
+
+//Prompt function asks the user for their answer
+	// parsInt converts a string to a number. The users name will be a string. We must convert it to int so match it with answerIndex array
+		//const userAnswer = parseInt(prompt('Please select the correct answer.'));
 
 
+//score function:
+    function score() {
+        var sc = 0;
+        return function(correct) {
+            if (correct) {
+                sc++;
+            }
+            return sc;
+        }
+    }
+    var keepScore = score();
+    
 
 
+//check answer if it's correct:
+    Question.prototype.checkAnswer = function(ans, callback) {
+        var sc;
+        
+        if (ans === this.correct) {
+            console.log('Correct answer!');
+            sc = callback(true);
+        } else {
+            console.log('Wrong answer. Try again :)');
+            sc = callback(false);
+        }
+        
+        this.displayScore(sc);
+    }
 
+    Question.prototype.displayScore = function(score) {
+        console.log('Your current score is: ' + score);
+        console.log('------------------------------');
+    }
+    
 
+//call the above method 
+	// call all the questions array, but console.log a random one
+		//Then collect the usersAnswer and check if its correct using CheckAnswer
 
+		//questions[randomQuestion].checkAnswer(userAnswer);
+
+/////////////Coding Challenge Part 2:
+////////Now, make sure your code is private with closures (expert level)
+
+//Select the next random question  w/ IIFE
+function nextQuestion() {
+//generate a random question from the questions array
+let randomQuestion = Math.floor(Math.random() * questions.length);
+
+ //out of all the questions, pick a random question, then call it to display results
+questions[randomQuestion].displayQuestion();
+
+//Prompt function asks the user for their answer
+	// parsInt converts a string to a number. The users name will be a string. We must convert it to int so match it with answerIndex array
+const userAnswer = prompt('Please select the correct answer.');
+
+//exit function when we are done with all questions:
+if(userAnswer !== 'exit'){
+	questions[randomQuestion].checkAnswer(parseInt(userAnswer));
+
+	nextQuestion();
+
+}
+
+}
+//invoke the function
+nextQuestion();
+
+}) ();
 
