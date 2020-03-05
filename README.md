@@ -5,3 +5,4 @@ This repository is an archive of all my notes, completed coding challenges, and 
 
 ## Jump to my projects:
 ### <a href="https://eylenkim.github.io/complete-javascript-course/4-DOM-pig-game/starter/index.html" target="_blank">Dice Game</a>
+### <a href="https://eylenkim.github.io/BudgetApp/" target="_blank">Budget Calculator</a>
